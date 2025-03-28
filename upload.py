@@ -512,6 +512,11 @@ async def do_the_thing(base_dir):
             if meta['debug']:
                 start_time = time.time()
 
+            if meta['read_release_notes']:
+                # Read notes from STDIN
+                print("> Enter release notes (Ctrl-D to finish):")
+                meta['release_notes'] = sys.stdin.read()
+                
             console.print(f"[green]Gathering info for {os.path.basename(path)}")
             await process_meta(meta, base_dir)
 

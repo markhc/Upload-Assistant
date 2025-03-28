@@ -92,6 +92,12 @@ class COMMON():
                 logo_size = self.config["DEFAULT"].get("logo_size", 420)
                 if logo != "":
                     descfile.write(f"[center][img={logo_size}]{logo}[/img][/center]\n\n")
+            
+            if 'release_notes' in meta and meta['release_notes']:
+                descfile.write("[code]\n")
+                descfile.write("[b]Release Notes:[/b]\n\n")
+                descfile.write(meta['release_notes'])
+                descfile.write("\n[/code]\n\n")
 
             # Handle single disc case
             if len(discs) == 1:
